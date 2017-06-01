@@ -16,6 +16,12 @@ export class UsuarioService {
         return this.http.get(this._urlUsuario)
                         .map(res => res.json());
     }
+
+    getUser(id){
+        return this.getAll()
+        .map((list: any) => list.find(usuario => usuario._id == id))
+        .catch(this.handleError);
+    }
     
     add(newUser){
         return this.http.post(this._urlUsuario, JSON.stringify(newUser), {headers: this.getHeaders()})
