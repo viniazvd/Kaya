@@ -1,0 +1,5 @@
+<p>Possui: {{ pessoas?.length }} pessoas.</p>
+
+<div *ngFor="let pessoa of pessoas"><a [routerLink]="[pessoa.id]">{{ pessoa.nome }}<br /></a></div>
+
+<br /><br /><a routerLink="new"><i>add</i></a>

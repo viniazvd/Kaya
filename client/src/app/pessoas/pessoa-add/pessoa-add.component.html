@@ -1,0 +1,15 @@
+<!--<div *ngIf="pessoa">-->
+<form (submit)="onSavee($event)">
+  <input name="name" type="hidden" [(ngModel)]="id">
+  <div>
+    <label>Name</label>
+    <input name="nome" type="text" [(ngModel)]="nome">      
+  </div>
+  <div>
+    <label>Email</label>
+    <input name="email" type="email" [(ngModel)]="email">      
+  </div>
+  <div>
+    <button>Submit</button>
+  </div>  
+</form>
