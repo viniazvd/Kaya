@@ -11,7 +11,10 @@ import { UsuarioService } from './usuario.service';
 })
 export class UsuarioComponent {
     usuarios: Usuario[];
-    title: string;
+    nome: string;
+    sobrenome: string;
+    email: string;
+    senha: string;
     
     constructor(private usuarioService:UsuarioService){
         this.usuarioService.getAll()
@@ -22,16 +25,21 @@ export class UsuarioComponent {
     
     add(event){
         event.preventDefault();
-        var newTask = {
-            title: this.title,
-            isDone: false
+        var newUser = {
+            nome: this.nome,
+            sobrenome: this.sobrenome,
+            email: this.email,
+            senha: this.senha
         }
         
-        this.usuarioService.add(newTask)
-            .subscribe(usuario => {
-                this.usuarios.push(usuario);
-                this.title = '';
-            });
+        this.usuarioService.add(newUser)
+                           .subscribe(usuario => {
+                                this.usuarios.push(usuario);
+                                this.nome = '';
+                                this.sobrenome = '';
+                                this.email = '';
+                                this.senha = '';
+                            });
     }
     
     deleteTask(id){
