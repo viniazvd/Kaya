@@ -5,6 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { UsuarioComponent } from './usuario.component';
 import { UsuarioService } from './usuario.service';
 import { UsuarioRoutingModule } from './usuario.routing.module';
+import { ListComponent } from './list/list.component';
+import { ListUsuarioComponent } from './list-usuario/list-usuario.component';
 
 @NgModule({
     imports: [
@@ -12,7 +14,11 @@ import { UsuarioRoutingModule } from './usuario.routing.module';
       FormsModule,
       UsuarioRoutingModule
     ],
-    declarations: [UsuarioComponent],
+    declarations: [
+      UsuarioComponent, 
+      ListComponent,
+      ListUsuarioComponent
+    ],
     providers: [UsuarioService]
 })
 export class UsuarioModule {}

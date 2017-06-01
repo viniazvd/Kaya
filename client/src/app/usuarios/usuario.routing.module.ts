@@ -2,9 +2,11 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { UsuarioComponent } from './usuario.component';
+import { ListComponent } from './list/list.component';
 
 const usuariosRoutes: Routes = [
-      { path: 'usuarios', component: UsuarioComponent }
+      { path: 'usuarios', component: ListComponent }/*,
+      { path: 'usuarios', component: UsuarioComponent }*/
 ];
 
 @NgModule({

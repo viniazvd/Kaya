@@ -26,8 +26,11 @@
 <div>
     <div *ngFor="let usuario of usuarios">
         <div class="col-md-7">
-            {{ usuario.nome }} {{ usuario.sobrenome }} - {{ usuario.email }}   
+            {{ usuario.nome }} ----
+            <a (click)="update(usuario)">Update</a>
+            <a (click)="delete(usuario._id)">Remove</a>   
         </div> 
+        
     </div>
 </div>
 

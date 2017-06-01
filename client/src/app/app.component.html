@@ -1,8 +1,11 @@
-<h3>Kaya</h3>
-
 <nav>
-	<a [routerLink]="['/']">Home</a>
-	<a [routerLink]="['/usuarios']">Usuários</a>
+	<div class="nav-wrapper">
+		<a href="#" class="brand-logo">  Kaya</a>
+		<ul id="nav-mobile" class="right hide-on-med-and-down">
+			<li><a [routerLink]="['/']">Home</a></li>
+			<li><a [routerLink]="['/usuarios']">Usuários</a></li>
+		</ul>
+	</div>
 </nav>
 
 <br>
@@ -11,3 +14,7 @@
 <div class="container">
   <router-outlet></router-outlet>
 </div>
+
+<!-- <app-footer></app-footer> -->
+
+

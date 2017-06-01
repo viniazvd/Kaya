@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Http } from '@angular/http';
+import { Router } from '@angular/router';
 
 import { Usuario } from './usuario';
 import { UsuarioService } from './usuario.service';
@@ -11,16 +12,21 @@ import { UsuarioService } from './usuario.service';
 })
 export class UsuarioComponent {
     usuarios: Usuario[];
+    //_id: string;
     nome: string;
     sobrenome: string;
     email: string;
     senha: string;
     
-    constructor(private usuarioService:UsuarioService){
+    constructor(private router: Router, private usuarioService:UsuarioService){
+        this.list();
+    }    
+
+    list(){
         this.usuarioService.getAll()
-            .subscribe(usuarios => {
-                this.usuarios = usuarios;                
-            });
+                           .subscribe(usuarios => {
+                                this.usuarios = usuarios;                
+                            });
     }
     
     add(event){
@@ -41,18 +47,23 @@ export class UsuarioComponent {
                                 this.senha = '';
                             });
     }
+
+    update(user) {
+        //alert(user._id)
+		this.usuarioService.update(user)
+                           .subscribe(
+                                   data => { alert("O usuário foi atualizado."); this.list(); },
+                                   err => { alert("O usuário não foi atualizado.") }
+                           );
+	}
     
-    deleteTask(id){
-       /* var usuarios = this.usuarios;
-        
-        this.usuarioService.deleteTask(id).subscribe(data => {
-            if(data.n == 1){
-                for(var i = 0;i < usuarios.length;i++){
-                    if(usuarios[i]._id == id){
-                        usuarios.splice(i, 1);
-                    }
-                }
-            }
-        });*/
+    delete(id){
+        if (confirm("Tem certeza que quer deletar o usuario?")) {
+            this.usuarioService.delete(id)
+                               .subscribe(
+                                    data => { alert("O usuário foi removido."); this.list(); },
+                                    err => { alert("O usuário não foi removido.") }
+                                );
+        }
     }
 }
