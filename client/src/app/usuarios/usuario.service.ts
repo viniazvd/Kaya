@@ -22,24 +22,23 @@ export class UsuarioService {
         .map((list: any) => list.find(usuario => usuario._id == id))
         .catch(this.handleError);
     }
-    
+
     add(newUser){
         return this.http.post(this._urlUsuario, JSON.stringify(newUser), {headers: this.getHeaders()})
-                   .map(res => res.json());
+                    .map(res => res.json());
     }
 
     update(user){
-    alert(JSON.stringify(user))
     return this.http.put(this._urlUsuario + user._id, JSON.stringify(user), {headers: this.getHeaders()})
                     .map(res => res.json())
                     .catch(this.handleError);
-  }
+    }
 
     delete(id){    
     return this.http.delete(this._urlUsuario + id, {headers: this.getHeaders()})
                     .map(res => res.json())
                     .catch(this.handleError);
-  }
+    }
 
     private getHeaders(){
         let headers = new Headers();

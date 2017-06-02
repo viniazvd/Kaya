@@ -18,7 +18,7 @@ export class EditComponent implements OnInit{
   private id: number;
   private subscription: Subscription;
 
-  usuarios: Usuario[] = [];
+  usuarios: Usuario[];
   _id: string;
   nome: string;
   sobrenome: string;
@@ -49,7 +49,7 @@ export class EditComponent implements OnInit{
   update(event) {
 		event.preventDefault();
         var userEdit = {
-            //_id:       this.id, 
+            _id:       this.id, 
             nome:      this.nome,
             sobrenome: this.sobrenome,
             email:     this.email,
@@ -58,10 +58,10 @@ export class EditComponent implements OnInit{
         
         this.usuarioService.update(userEdit)
                            .subscribe(usuario => {
-                              this.usuarios.push(usuario);
                               alert('Usuário atualizado!')
                               this.navigateBack()
                             });
+        
 	}
 
   private navigateBack() {
