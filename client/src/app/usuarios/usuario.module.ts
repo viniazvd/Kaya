@@ -4,8 +4,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { UsuarioRoutingModule } from './usuario.routing.module';
 
-import { UsuarioComponent } from './usuario.component';
-
 import { ListComponent } from './list/list.component';
 import { ListUsuarioComponent } from './list-usuario/list-usuario.component';
 import { DetailComponent } from './detail/detail.component';
@@ -22,7 +20,6 @@ import { EditComponent } from './edit/edit.component';
       UsuarioRoutingModule
     ],
     declarations: [
-      UsuarioComponent, 
       ListComponent,
       ListUsuarioComponent,
       DetailComponent,

@@ -1,13 +1,70 @@
-<div class="collection">
-  <app-list-usuario *ngFor="let usuario of usuarios"
-    [usuario]="usuario">
-  </app-list-usuario>
+<div class="responsive-table">
+
+  <div class="row">
+    <div class="col s12">
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="material-icons prefix">search</i>
+          <input type="text" id="autocomplete-input" class="autocomplete">
+          <label for="autocomplete-input">Digite um usuário</label>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+  <div class="collection">
+    <table class="highlight">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Sobrenome</th>
+          <th>E-mail</th>
+          <th>Senha</th>
+          <th>Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let usuario of usuarios">
+        <td>
+          <a class="collection-item">{{ usuario.nome }}</a>
+        </td>
+        <td>
+          <a class="collection-item">{{ usuario.sobrenome }}</a>
+        </td>
+        <td>
+          <a class="collection-item">{{ usuario.email }}</a>
+        </td>
+        <td>
+          <a class="collection-item">{{ usuario.senha }}</a>
+        </td>
+        <td>
+          <a class="btn btn-floating btn-large cyan pulse" [routerLink]="[usuario._id]">
+            <i class="material-icons">edit</i>
+          </a>
+        </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
 
-<div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+<div class="center-align">
+  <ul class="pagination">
+    <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+    <li class="active"><a href="#!">1</a></li>
+    <li class="waves-effect"><a href="#!">2</a></li>
+    <li class="waves-effect"><a href="#!">3</a></li>
+    <li class="waves-effect"><a href="#!">4</a></li>
+    <li class="waves-effect"><a href="#!">5</a></li>
+    <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+  </ul>
+</div>
+
+<div class="fixed-action-btn" style="bottom: 250px; right: 24px;">
   <a class="btn-floating btn-large waves-effect waves-light green" routerLink="add">
     <i class="material-icons">add</i>
   </a>
 </div>
+
 
 <router-outlet></router-outlet>
