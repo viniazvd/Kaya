@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import { Usuario } from './usuario';
 import { UsuarioService } from './usuario.service';
 
+import { FooterComponent } from './../footer/footer.component';
+
 @Component({
   selector: 'app-usuario',
   templateUrl: './usuario.component.html',

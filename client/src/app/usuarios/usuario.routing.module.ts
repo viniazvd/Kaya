@@ -9,8 +9,8 @@ import { EditComponent } from './edit/edit.component';
 
 const usuariosRoutes: Routes = [
       { path: 'usuarios', component: ListComponent },
-      { path: 'usuarios/:id', component: DetailComponent },
       { path: 'usuarios/add', component: AddComponent },
+      { path: 'usuarios/:id', component: DetailComponent },      
       { path: 'usuarios/:id/edit', component: EditComponent }
 ];
 
