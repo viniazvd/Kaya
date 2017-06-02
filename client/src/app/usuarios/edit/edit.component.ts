@@ -36,7 +36,7 @@ export class EditComponent implements OnInit{
         this.usuarioService.getUser(this.id)
                            .subscribe(
                               data => { this.usuarios = data; },
-                              err => { alert('Aconteceu um erro!'); }
+                              err  => { alert('Aconteceu um erro!'); }
                             );
       }
     );
@@ -49,7 +49,7 @@ export class EditComponent implements OnInit{
   update(event) {
 		event.preventDefault();
         var userEdit = {
-            _id:       this.id, 
+            //_id:       this.id, 
             nome:      this.nome,
             sobrenome: this.sobrenome,
             email:     this.email,
@@ -59,10 +59,6 @@ export class EditComponent implements OnInit{
         this.usuarioService.update(userEdit)
                            .subscribe(usuario => {
                               this.usuarios.push(usuario);
-                              this.nome = '';
-                              this.sobrenome = '';
-                              this.email = '';
-                              this.senha = '';
                               alert('Usuário atualizado!')
                               this.navigateBack()
                             });

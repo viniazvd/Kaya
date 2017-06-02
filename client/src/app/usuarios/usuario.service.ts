@@ -29,6 +29,7 @@ export class UsuarioService {
     }
 
     update(user){
+    alert(JSON.stringify(user))
     return this.http.put(this._urlUsuario + user._id, JSON.stringify(user), {headers: this.getHeaders()})
                     .map(res => res.json())
                     .catch(this.handleError);
