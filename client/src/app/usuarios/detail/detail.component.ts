@@ -51,4 +51,8 @@ export class DetailComponent implements OnInit {
   navigateBack() {
     this.router.navigate(['/usuarios']);
   }
+
+  onCancel() {
+    this.navigateBack();
+  }
 }

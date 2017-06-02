@@ -8,6 +8,7 @@ const cors = require('cors')
 
 const dbconnection = require('./config/db');
 //const clientSessions = require('./config/session');
+var jwt = require('jwt.json');
 
 const users = require('./routes/user');
 
@@ -34,6 +35,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
+
+// use JWT auth to secure the api
+app.use(expressJwt({ secret: jwt.secret }));
+//app.use(expressJwt({ secret: jwt.secret }).unless({ path: ['/users/authenticate', '/users/register'] }));
 
 //app.use(session);
 //app.use(middleware.session);
