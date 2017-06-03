@@ -6,5 +6,6 @@ router.get('/:id', controller.getUser)
 router.put('/:id', controller.update)
 router.delete('/:id', controller.delete)
 router.post('/', controller.save)
+router.post('/authenticate', controller.authenticate);
 
 module.exports = router

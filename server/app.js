@@ -6,9 +6,10 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const cors = require('cors')
 
-const dbconnection = require('./config/db');
-//const clientSessions = require('./config/session');
-var jwt = require('jwt.json');
+const dbconnection = require('./config/db')
+
+//const jwt = require('./config/jwt');
+const expressJwt = require('express-jwt');
 
 const users = require('./routes/user');
 
@@ -17,15 +18,6 @@ const app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-
-/*const session = clientSessions({
-  cookieName    : 'session',
-  secret        : 'secret true-power token',
-  duration      : 7 * 60 * 60 * 1000,
-  activeDuration: 5 * 60 * 1000,
-  httpOnly      : true,
-  ephemeral     : true
-});*/
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -37,11 +29,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 
 // use JWT auth to secure the api
-app.use(expressJwt({ secret: jwt.secret }));
-//app.use(expressJwt({ secret: jwt.secret }).unless({ path: ['/users/authenticate', '/users/register'] }));
-
-//app.use(session);
-//app.use(middleware.session);
+app.use(expressJwt({secret: 'jwt.secret'}).unless({ path: ['/users/authenticate', '/users/'] }));
 
 app.use('/users', users);
 

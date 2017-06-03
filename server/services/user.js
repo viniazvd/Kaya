@@ -1,6 +1,9 @@
 const modelUser = require('./../models/user')
 const ObjectId = require('mongoose').Types.ObjectId
 
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
+
 let service = {}
 
 service.fetch = (params, cb) => {
@@ -54,4 +57,21 @@ service.delete = (id, cb) => {
   })
 }
 
+service.authenticate = (email, senha, cb) => {
+  const secret = 'jwt.secret'
+
+  modelUser.findOne({ email: email }, (err, results) => {
+    if(err) cb(err);
+
+    const  hash = bcrypt.hashSync(results.senha);
+    if (results && bcrypt.compareSync(senha, hash)) {
+      const token = jwt.sign({ sub: results._id }, secret)
+      cb(null, token)
+    } else {
+      console.log('errowww')
+    }
+  })
+}
+
 module.exports = service
+

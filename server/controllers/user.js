@@ -54,6 +54,16 @@
     })
   }
 
-  module.exports = controller
+  controller.authenticate = (req, res) => {
+    service.authenticate(req.body.email, req.body.senha, (err, result) => {
+      if (err) {
+        res.status(500).send()
+      } else {
+        res.json(result)
+      }
+    })
+  }
+
+module.exports = controller
 
 
