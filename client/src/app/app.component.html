@@ -1,15 +1,17 @@
+<div class="navbar-fixed">
 <nav>
-	<div class="nav-wrapper">
+	<div class="nav-wrapper" >
 		<a href="#" class="brand-logo">-->Kaya</a>
 		<ul id="nav-mobile" class="right hide-on-med-and-down">
-			<li><a [routerLink]="['/']">Home</a></li>
-			<li><a [routerLink]="['/usuarios']">Usuários</a></li>
-			<li><a [routerLink]="['/registrar']">Registrar</a></li>
-			<li><a [routerLink]="['/login']">Login</a></li>
-			<li (click)="logout()"><a [routerLink]="['/']">Log out</a></li>
+			<li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/']">Home</a></li>
+			<li routerLinkActive="active" *ngIf="isAuth()"><a [routerLink]="['/usuarios']">Usuários</a></li>
+			<li routerLinkActive="active" *ngIf="!isAuth()"><a [routerLink]="['/registrar']">Registrar</a></li>
+			<li routerLinkActive="active" *ngIf="!isAuth()"><a [routerLink]="['/login']">Login</a></li>
+			<li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" *ngIf="isAuth()" (click)="logout()"><a [routerLink]="['/']">Log out</a></li>
 		</ul>
 	</div>
 </nav>
+</div>
 
 <br>
 <br>

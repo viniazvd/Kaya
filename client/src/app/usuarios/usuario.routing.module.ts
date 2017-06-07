@@ -6,11 +6,13 @@ import { AddComponent } from './add/add.component';
 import { DetailComponent } from './detail/detail.component';
 import { EditComponent } from './edit/edit.component';
 
+import { AuthGuard } from './../login/auth.guard';
+
 const usuariosRoutes: Routes = [
-      { path: 'usuarios', component: ListComponent },
-      { path: 'usuarios/add', component: AddComponent },
-      { path: 'usuarios/:id', component: DetailComponent },      
-      { path: 'usuarios/:id/edit', component: EditComponent }
+      { path: 'usuarios', component: ListComponent, canActivate: [AuthGuard] },
+      { path: 'usuarios/add', component: AddComponent, canActivate: [AuthGuard] },
+      { path: 'usuarios/:id', component: DetailComponent, canActivate: [AuthGuard] },      
+      { path: 'usuarios/:id/edit', component: EditComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({

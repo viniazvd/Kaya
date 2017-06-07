@@ -13,6 +13,7 @@ import { RegistrarComponent } from './registrar/registrar.component';
 import { LoginComponent } from './login/login.component';
 
 import { AuthenticationService } from './login/authentication.service';
+import { AuthGuard } from './login/auth.guard';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,7 @@ import { AuthenticationService } from './login/authentication.service';
     AppRoutingModule,
     UsuarioModule
   ],
-  providers: [AuthenticationService],
+  providers: [AuthenticationService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

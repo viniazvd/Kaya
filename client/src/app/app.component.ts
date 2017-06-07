@@ -1,20 +1,36 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { Router } from '@angular/router';
+
+import { AuthenticationService } from './login/authentication.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
-  constructor(private router: Router) {}
+  private showNavBar: boolean = false;
 
-  logout() {
-    alert('Você saiu do sistema.')
-    localStorage.removeItem('token');
-    //this.router.navigate(['/login']);
+  constructor(private router: Router, private authService: AuthenticationService) {}
+
+  ngOnInit(){
+    this.authService.showNavBarEmitter.subscribe(
+      (mode: boolean) => {
+        if (mode !== null) {
+          this.showNavBar = mode;
+        }
+      }
+    );
   }
 
+  isAuth() {
+    return this.authService.isAuthenticated();
+  }
+
+  logout() {
+    alert('Você saiu do sistema.');
+    localStorage.removeItem('token');
+  }
 }
