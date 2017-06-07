@@ -29,7 +29,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 
 // use JWT auth to secure the api
-app.use(expressJwt({secret: 'jwt.secret'}).unless({ path: ['/users/authenticate', '/users/'] }));
+//app.use(expressJwt({secret: 'jwt.secret'}));//.unless({ path: ['/users/authenticate', '/users/'] }));
 
 app.use('/users', users);
 

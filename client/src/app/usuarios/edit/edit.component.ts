@@ -6,7 +6,7 @@ import { Http } from '@angular/http';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { UsuarioService } from './../usuario.service';
-import { Usuario } from './../usuario';
+import { Usuario } from './../../usuario';
 
 @Component({
   selector: 'app-edit',

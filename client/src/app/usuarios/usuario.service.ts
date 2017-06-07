@@ -3,7 +3,7 @@ import { Http, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 
-import { Usuario } from './usuario';
+import { Usuario } from './../usuario';
 
 @Injectable()
 export class UsuarioService {
@@ -25,7 +25,7 @@ export class UsuarioService {
 
     add(newUser){
         return this.http.post(this._urlUsuario, JSON.stringify(newUser), {headers: this.getHeaders()})
-                    .map(res => res.json());
+                        .map(res => res.json());
     }
 
     update(user){

@@ -1,0 +1,36 @@
+<h5>Login</h5>
+
+<div class="row">
+
+  <form materialize class="col s12" (submit)="logar($event)">
+
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">email</i>
+        <input type="text" [(ngModel)]="email" name="email" class="form-control" placeholder="E-mail">    
+        <label for="email">E-mail</label>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">lock</i>
+        <input type="password" [(ngModel)]="senha" name="senha" class="form-control" placeholder="Password"> 
+        <label for="senha">Password</label>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12">
+        <button class="btn waves-effect waves-light" type="submit">
+          Logar
+          <i class="material-icons right">send</i>
+        </button>
+        <a class="waves-effect waves-light btn red"
+        (click)="onCancel()">Cancel</a>
+      </div>
+    </div>
+
+  </form>
+
+</div>

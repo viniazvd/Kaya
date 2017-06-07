@@ -10,12 +10,16 @@ import { UsuarioModule } from './usuarios/usuario.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { RegistrarComponent } from './registrar/registrar.component';
+import { LoginComponent } from './login/login.component';
+
+import { AuthenticationService } from './login/authentication.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     RegistrarComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +29,7 @@ import { RegistrarComponent } from './registrar/registrar.component';
     AppRoutingModule,
     UsuarioModule
   ],
-  providers: [],
+  providers: [AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
