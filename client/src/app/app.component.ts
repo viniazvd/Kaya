@@ -11,18 +11,10 @@ import { AuthenticationService } from './login/authentication.service';
 })
 export class AppComponent implements OnInit {
 
-  private showNavBar: boolean = false;
-
   constructor(private router: Router, private authService: AuthenticationService) {}
 
   ngOnInit(){
-    this.authService.showNavBarEmitter.subscribe(
-      (mode: boolean) => {
-        if (mode !== null) {
-          this.showNavBar = mode;
-        }
-      }
-    );
+
   }
 
   isAuth() {
@@ -32,5 +24,6 @@ export class AppComponent implements OnInit {
   logout() {
     alert('Você saiu do sistema.');
     localStorage.removeItem('token');
+    location.reload();
   }
 }

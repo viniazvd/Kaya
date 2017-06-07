@@ -3,11 +3,11 @@
 	<div class="nav-wrapper" >
 		<a href="#" class="brand-logo">-->Kaya</a>
 		<ul id="nav-mobile" class="right hide-on-med-and-down">
-			<li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/']">Home</a></li>
-			<li routerLinkActive="active" *ngIf="isAuth()"><a [routerLink]="['/usuarios']">Usuários</a></li>
-			<li routerLinkActive="active" *ngIf="!isAuth()"><a [routerLink]="['/registrar']">Registrar</a></li>
-			<li routerLinkActive="active" *ngIf="!isAuth()"><a [routerLink]="['/login']">Login</a></li>
-			<li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" *ngIf="isAuth()" (click)="logout()"><a [routerLink]="['/']">Log out</a></li>
+			<li><a [routerLink]="['/']">Home</a></li>
+			<li *ngIf="isAuth()"><a [routerLink]="['/usuarios']">Usuários</a></li>
+			<li *ngIf="!isAuth()"><a [routerLink]="['/registrar']">Registrar</a></li>
+			<li *ngIf="!isAuth()"><a [routerLink]="['/login']">Login</a></li>
+			<li *ngIf="isAuth()"><a (click)="logout()" [routerLink]="['/']">Log out</a></li>
 		</ul>
 	</div>
 </nav>

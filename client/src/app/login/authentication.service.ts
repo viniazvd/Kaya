@@ -11,10 +11,9 @@ import { Http, Headers, Response } from '@angular/http';
 export class AuthenticationService {
 
   private _urlUsuario = 'http://localhost:3000/users/authenticate';
-  public showNavBarEmitter: EventEmitter<boolean> = new EventEmitter<boolean>();
   private authenticated = false;
 
-  constructor(private router: Router, private http: Http) {}
+  constructor(private http: Http) {}
 
   login(user) {    
       return this.http.post(this._urlUsuario, JSON.stringify(user), {headers: this.getHeaders()})
@@ -23,7 +22,6 @@ export class AuthenticationService {
                         if (token) {                            
                             localStorage.setItem('token', token);
                             this.authenticated = true;
-                            this.showNavBar(true);
                         } else {
                           console.log('tchau')  
                         }
@@ -32,16 +30,11 @@ export class AuthenticationService {
 
   logout() {
     localStorage.removeItem('token');
-    this.showNavBar(false);
-    this.authenticated = false;
+    this.authenticated = false;    
   }
 
   isAuthenticated() {
     return this.authenticated;
-  }
-
-  private showNavBar(ifShow: boolean) {
-     this.showNavBarEmitter.emit(ifShow);
   }
 
   private getHeaders(){
